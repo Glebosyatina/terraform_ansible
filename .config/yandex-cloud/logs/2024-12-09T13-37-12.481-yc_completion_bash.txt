@@ -1,0 +1,352 @@
+13:37:12.481260	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:37:12.481248 +0000 UTC"}
+13:37:12.481351	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:37:12.481380	Config file not found	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:37:12.481387	Selected profile	{"profile": "default"}
+13:37:12.481475	Updating values from flags
+13:37:12.481523	No authentication option specified in config. Going to check if compute instance SA authentication is available.
+13:37:12.482541	grpc	Going to request instance SA token in metadata service:
+GET /computeMetadata/v1/instance/service-accounts/default/token HTTP/1.1
+Host: 169.254.169.254
+User-Agent: Go-http-client/1.1
+Metadata-Flavor: Google
+Accept-Encoding: gzip
+
+
+13:37:12.484427	grpc	Metadata service instance SA token response (without body, because contains sensitive token):
+HTTP/1.1 404 Not Found
+Content-Length: 9
+Connection: keep-alive
+Content-Type: text/plain; charset=utf-8
+Date: Mon, 09 Dec 2024 13:37:12 GMT
+Etag: 9d1ead73e678fa2f51a70a933b0bf017
+Server: nginx
+
+
+13:37:12.484490	Check if compute instance SA authentication in metadata service is available failed.	{"error": "failed to get compute instance service account token from instance metadata service: GET http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token: 404 Not Found.\nIs this compute instance running using Service Account? That is, Instance.service_account_id should not be empty."}
+13:37:12.502104	Unable to get the terminal size. Output help independent of the terminal size	{"error": "inappropriate ioctl for device"}
+out> # bash completion V2 for yc                                   -*- shell-script -*-
+out> 
+out> __yc_debug()
+out> {
+out>     if [[ -n ${BASH_COMP_DEBUG_FILE:-} ]]; then
+out>         echo "$*" >> "${BASH_COMP_DEBUG_FILE}"
+out>     fi
+out> }
+out> 
+out> # Macs have bash3 for which the bash-completion package doesn't include
+out> # _init_completion. This is a minimal version of that function.
+out> __yc_init_completion()
+out> {
+out>     COMPREPLY=()
+out>     _get_comp_words_by_ref "$@" cur prev words cword
+out> }
+out> 
+out> # This function calls the yc program to obtain the completion
+out> # results and the directive.  It fills the 'out' and 'directive' vars.
+out> __yc_get_completion_results() {
+out>     local requestComp lastParam lastChar args
+out> 
+out>     # Prepare the command to request completions for the program.
+out>     # Calling ${words[0]} instead of directly yc allows to handle aliases
+out>     args=("${words[@]:1}")
+out>     requestComp="${words[0]} __complete ${args[*]}"
+out> 
+out>     lastParam=${words[$((${#words[@]}-1))]}
+out>     lastChar=${lastParam:$((${#lastParam}-1)):1}
+out>     __yc_debug "lastParam ${lastParam}, lastChar ${lastChar}"
+out> 
+out>     if [ -z "${cur}" ] && [ "${lastChar}" != "=" ]; then
+out>         # If the last parameter is complete (there is a space following it)
+out>         # We add an extra empty parameter so we can indicate this to the go method.
+out>         __yc_debug "Adding extra empty parameter"
+out>         requestComp="${requestComp} ''"
+out>     fi
+out> 
+out>     # When completing a flag with an = (e.g., yc -n=<TAB>)
+out>     # bash focuses on the part after the =, so we need to remove
+out>     # the flag part from $cur
+out>     if [[ "${cur}" == -*=* ]]; then
+out>         cur="${cur#*=}"
+out>     fi
+out> 
+out>     __yc_debug "Calling ${requestComp}"
+out>     # Use eval to handle any environment variables and such
+out>     out=$(eval "${requestComp}" 2>/dev/null)
+out> 
+out>     # Extract the directive integer at the very end of the output following a colon (:)
+out>     directive=${out##*:}
+out>     # Remove the directive
+out>     out=${out%:*}
+out>     if [ "${directive}" = "${out}" ]; then
+out>         # There is not directive specified
+out>         directive=0
+out>     fi
+out>     __yc_debug "The completion directive is: ${directive}"
+out>     __yc_debug "The completions are: ${out}"
+out> }
+out> 
+out> __yc_process_completion_results() {
+out>     local shellCompDirectiveError=1
+out>     local shellCompDirectiveNoSpace=2
+out>     local shellCompDirectiveNoFileComp=4
+out>     local shellCompDirectiveFilterFileExt=8
+out>     local shellCompDirectiveFilterDirs=16
+out> 
+out>     if [ $((directive & shellCompDirectiveError)) -ne 0 ]; then
+out>         # Error code.  No completion.
+out>         __yc_debug "Received error from custom completion go code"
+out>         return
+out>     else
+out>         if [ $((directive & shellCompDirectiveNoSpace)) -ne 0 ]; then
+out>             if [[ $(type -t compopt) = "builtin" ]]; then
+out>                 __yc_debug "Activating no space"
+out>                 compopt -o nospace
+out>             else
+out>                 __yc_debug "No space directive not supported in this version of bash"
+out>             fi
+out>         fi
+out>         if [ $((directive & shellCompDirectiveNoFileComp)) -ne 0 ]; then
+out>             if [[ $(type -t compopt) = "builtin" ]]; then
+out>                 __yc_debug "Activating no file completion"
+out>                 compopt +o default
+out>             else
+out>                 __yc_debug "No file completion directive not supported in this version of bash"
+out>             fi
+out>         fi
+out>     fi
+out> 
+out>     # Separate activeHelp from normal completions
+out>     local completions=()
+out>     local activeHelp=()
+out>     __yc_extract_activeHelp
+out> 
+out>     if [ $((directive & shellCompDirectiveFilterFileExt)) -ne 0 ]; then
+out>         # File extension filtering
+out>         local fullFilter filter filteringCmd
+out> 
+out>         # Do not use quotes around the $completions variable or else newline
+out>         # characters will be kept.
+out>         for filter in ${completions[*]}; do
+out>             fullFilter+="$filter|"
+out>         done
+out> 
+out>         filteringCmd="_filedir $fullFilter"
+out>         __yc_debug "File filtering command: $filteringCmd"
+out>         $filteringCmd
+out>     elif [ $((directive & shellCompDirectiveFilterDirs)) -ne 0 ]; then
+out>         # File completion for directories only
+out> 
+out>         # Use printf to strip any trailing newline
+out>         local subdir
+out>         subdir=$(printf "%s" "${completions[0]}")
+out>         if [ -n "$subdir" ]; then
+out>             __yc_debug "Listing directories in $subdir"
+out>             pushd "$subdir" >/dev/null 2>&1 && _filedir -d && popd >/dev/null 2>&1 || return
+out>         else
+out>             __yc_debug "Listing directories in ."
+out>             _filedir -d
+out>         fi
+out>     else
+out>         __yc_handle_completion_types
+out>     fi
+out> 
+out>     __yc_handle_special_char "$cur" :
+out>     __yc_handle_special_char "$cur" =
+out> 
+out>     # Print the activeHelp statements before we finish
+out>     if [ ${#activeHelp[*]} -ne 0 ]; then
+out>         printf "\n";
+out>         printf "%s\n" "${activeHelp[@]}"
+out>         printf "\n"
+out> 
+out>         # The prompt format is only available from bash 4.4.
+out>         # We test if it is available before using it.
+out>         if (x=${PS1@P}) 2> /dev/null; then
+out>             printf "%s" "${PS1@P}${COMP_LINE[@]}"
+out>         else
+out>             # Can't print the prompt.  Just print the
+out>             # text the user had typed, it is workable enough.
+out>             printf "%s" "${COMP_LINE[@]}"
+out>         fi
+out>     fi
+out> }
+out> 
+out> # Separate activeHelp lines from real completions.
+out> # Fills the $activeHelp and $completions arrays.
+out> __yc_extract_activeHelp() {
+out>     local activeHelpMarker="_activeHelp_ "
+out>     local endIndex=${#activeHelpMarker}
+out> 
+out>     while IFS='' read -r comp; do
+out>         if [ "${comp:0:endIndex}" = "$activeHelpMarker" ]; then
+out>             comp=${comp:endIndex}
+out>             __yc_debug "ActiveHelp found: $comp"
+out>             if [ -n "$comp" ]; then
+out>                 activeHelp+=("$comp")
+out>             fi
+out>         else
+out>             # Not an activeHelp line but a normal completion
+out>             completions+=("$comp")
+out>         fi
+out>     done < <(printf "%s\n" "${out}")
+out> }
+out> 
+out> __yc_handle_completion_types() {
+out>     __yc_debug "__yc_handle_completion_types: COMP_TYPE is $COMP_TYPE"
+out> 
+out>     case $COMP_TYPE in
+out>     37|42)
+out>         # Type: menu-complete/menu-complete-backward and insert-completions
+out>         # If the user requested inserting one completion at a time, or all
+out>         # completions at once on the command-line we must remove the descriptions.
+out>         # https://github.com/spf13/cobra/issues/1508
+out>         local tab=$'\t' comp
+out>         while IFS='' read -r comp; do
+out>             [[ -z $comp ]] && continue
+out>             # Strip any description
+out>             comp=${comp%%$tab*}
+out>             # Only consider the completions that match
+out>             if [[ $comp == "$cur"* ]]; then
+out>                 COMPREPLY+=("$comp")
+out>             fi
+out>         done < <(printf "%s\n" "${completions[@]}")
+out>         ;;
+out> 
+out>     *)
+out>         # Type: complete (normal completion)
+out>         __yc_handle_standard_completion_case
+out>         ;;
+out>     esac
+out> }
+out> 
+out> __yc_handle_standard_completion_case() {
+out>     local tab=$'\t' comp
+out> 
+out>     # Short circuit to optimize if we don't have descriptions
+out>     if [[ "${completions[*]}" != *$tab* ]]; then
+out>         IFS=$'\n' read -ra COMPREPLY -d '' < <(compgen -W "${completions[*]}" -- "$cur")
+out>         return 0
+out>     fi
+out> 
+out>     local longest=0
+out>     local compline
+out>     # Look for the longest completion so that we can format things nicely
+out>     while IFS='' read -r compline; do
+out>         [[ -z $compline ]] && continue
+out>         # Strip any description before checking the length
+out>         comp=${compline%%$tab*}
+out>         # Only consider the completions that match
+out>         [[ $comp == "$cur"* ]] || continue
+out>         COMPREPLY+=("$compline")
+out>         if ((${#comp}>longest)); then
+out>             longest=${#comp}
+out>         fi
+out>     done < <(printf "%s\n" "${completions[@]}")
+out> 
+out>     # If there is a single completion left, remove the description text
+out>     if [ ${#COMPREPLY[*]} -eq 1 ]; then
+out>         __yc_debug "COMPREPLY[0]: ${COMPREPLY[0]}"
+out>         comp="${COMPREPLY[0]%%$tab*}"
+out>         __yc_debug "Removed description from single completion, which is now: ${comp}"
+out>         COMPREPLY[0]=$comp
+out>     else # Format the descriptions
+out>         __yc_format_comp_descriptions $longest
+out>     fi
+out> }
+out> 
+out> __yc_handle_special_char()
+out> {
+out>     local comp="$1"
+out>     local char=$2
+out>     if [[ "$comp" == *${char}* && "$COMP_WORDBREAKS" == *${char}* ]]; then
+out>         local word=${comp%"${comp##*${char}}"}
+out>         local idx=${#COMPREPLY[*]}
+out>         while [[ $((--idx)) -ge 0 ]]; do
+out>             COMPREPLY[$idx]=${COMPREPLY[$idx]#"$word"}
+out>         done
+out>     fi
+out> }
+out> 
+out> __yc_format_comp_descriptions()
+out> {
+out>     local tab=$'\t'
+out>     local comp desc maxdesclength
+out>     local longest=$1
+out> 
+out>     local i ci
+out>     for ci in ${!COMPREPLY[*]}; do
+out>         comp=${COMPREPLY[ci]}
+out>         # Properly format the description string which follows a tab character if there is one
+out>         if [[ "$comp" == *$tab* ]]; then
+out>             __yc_debug "Original comp: $comp"
+out>             desc=${comp#*$tab}
+out>             comp=${comp%%$tab*}
+out> 
+out>             # $COLUMNS stores the current shell width.
+out>             # Remove an extra 4 because we add 2 spaces and 2 parentheses.
+out>             maxdesclength=$(( COLUMNS - longest - 4 ))
+out> 
+out>             # Make sure we can fit a description of at least 8 characters
+out>             # if we are to align the descriptions.
+out>             if [[ $maxdesclength -gt 8 ]]; then
+out>                 # Add the proper number of spaces to align the descriptions
+out>                 for ((i = ${#comp} ; i < longest ; i++)); do
+out>                     comp+=" "
+out>                 done
+out>             else
+out>                 # Don't pad the descriptions so we can fit more text after the completion
+out>                 maxdesclength=$(( COLUMNS - ${#comp} - 4 ))
+out>             fi
+out> 
+out>             # If there is enough space for any description text,
+out>             # truncate the descriptions that are too long for the shell width
+out>             if [ $maxdesclength -gt 0 ]; then
+out>                 if [ ${#desc} -gt $maxdesclength ]; then
+out>                     desc=${desc:0:$(( maxdesclength - 1 ))}
+out>                     desc+="…"
+out>                 fi
+out>                 comp+="  ($desc)"
+out>             fi
+out>             COMPREPLY[ci]=$comp
+out>             __yc_debug "Final comp: $comp"
+out>         fi
+out>     done
+out> }
+out> 
+out> __start_yc()
+out> {
+out>     local cur prev words cword split
+out> 
+out>     COMPREPLY=()
+out> 
+out>     # Call _init_completion from the bash-completion package
+out>     # to prepare the arguments properly
+out>     if declare -F _init_completion >/dev/null 2>&1; then
+out>         _init_completion -n "=:" || return
+out>     else
+out>         __yc_init_completion -n "=:" || return
+out>     fi
+out> 
+out>     __yc_debug
+out>     __yc_debug "========= starting completion logic =========="
+out>     __yc_debug "cur is ${cur}, words[*] is ${words[*]}, #words[@] is ${#words[@]}, cword is $cword"
+out> 
+out>     # The user could have moved the cursor backwards on the command-line.
+out>     # We need to trigger completion from the $cword location, so we need
+out>     # to truncate the command-line ($words) up to the $cword location.
+out>     words=("${words[@]:0:$cword+1}")
+out>     __yc_debug "Truncated words[*]: ${words[*]},"
+out> 
+out>     local out directive
+out>     __yc_get_completion_results
+out>     __yc_process_completion_results
+out> }
+out> 
+out> if [[ $(type -t compopt) = "builtin" ]]; then
+out>     complete -o default -F __start_yc yc
+out> else
+out>     complete -o default -o nospace -F __start_yc yc
+out> fi
+out> 
+out> # ex: ts=4 sw=4 et filetype=sh
+13:37:12.502508	Command execution finished

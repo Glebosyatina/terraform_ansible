@@ -1,0 +1,8 @@
+13:41:09.053383	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:41:09.053372 +0000 UTC"}
+13:41:09.053473	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:41:09.053967	Selected profile	{"profile": "gleb"}
+13:41:09.054063	Updating values from flags
+13:41:09.071891	Unable to get the terminal size. Output help independent of the terminal size	{"error": "inappropriate ioctl for device"}
+13:41:09.072108	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+out> b1gtjf3unup3fbd0desb
+13:41:09.072512	Command execution finished

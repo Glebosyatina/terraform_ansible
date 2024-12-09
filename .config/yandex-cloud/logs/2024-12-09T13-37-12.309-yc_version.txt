@@ -1,0 +1,28 @@
+13:37:12.309244	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:37:12.309232 +0000 UTC"}
+13:37:12.309342	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:37:12.309373	Config file not found	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:37:12.309379	Selected profile	{"profile": "default"}
+13:37:12.309467	Updating values from flags
+13:37:12.309514	No authentication option specified in config. Going to check if compute instance SA authentication is available.
+13:37:12.310575	grpc	Going to request instance SA token in metadata service:
+GET /computeMetadata/v1/instance/service-accounts/default/token HTTP/1.1
+Host: 169.254.169.254
+User-Agent: Go-http-client/1.1
+Metadata-Flavor: Google
+Accept-Encoding: gzip
+
+
+13:37:12.312400	grpc	Metadata service instance SA token response (without body, because contains sensitive token):
+HTTP/1.1 404 Not Found
+Content-Length: 9
+Connection: keep-alive
+Content-Type: text/plain; charset=utf-8
+Date: Mon, 09 Dec 2024 13:37:12 GMT
+Etag: 9d1ead73e678fa2f51a70a933b0bf017
+Server: nginx
+
+
+13:37:12.312464	Check if compute instance SA authentication in metadata service is available failed.	{"error": "failed to get compute instance service account token from instance metadata service: GET http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token: 404 Not Found.\nIs this compute instance running using Service Account? That is, Instance.service_account_id should not be empty."}
+out> Yandex Cloud CLI 0.140.0 linux/amd64
+13:37:12.332864	Short command, don't wait for check result.
+13:37:12.332885	Command execution finished

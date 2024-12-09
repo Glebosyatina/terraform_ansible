@@ -1,0 +1,26 @@
+13:37:12.645459	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:37:12.645449 +0000 UTC"}
+13:37:12.645546	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:37:12.645574	Config file not found	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:37:12.645580	Selected profile	{"profile": "default"}
+13:37:12.645666	Updating values from flags
+13:37:12.645714	No authentication option specified in config. Going to check if compute instance SA authentication is available.
+13:37:12.646757	grpc	Going to request instance SA token in metadata service:
+GET /computeMetadata/v1/instance/service-accounts/default/token HTTP/1.1
+Host: 169.254.169.254
+User-Agent: Go-http-client/1.1
+Metadata-Flavor: Google
+Accept-Encoding: gzip
+
+
+13:37:12.648880	grpc	Metadata service instance SA token response (without body, because contains sensitive token):
+HTTP/1.1 404 Not Found
+Content-Length: 9
+Connection: keep-alive
+Content-Type: text/plain; charset=utf-8
+Date: Mon, 09 Dec 2024 13:37:12 GMT
+Etag: 9d1ead73e678fa2f51a70a933b0bf017
+Server: nginx
+
+
+13:37:12.648948	Check if compute instance SA authentication in metadata service is available failed.	{"error": "failed to get compute instance service account token from instance metadata service: GET http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token: 404 Not Found.\nIs this compute instance running using Service Account? That is, Instance.service_account_id should not be empty."}
+err> Now we have zsh completion. Type "echo 'source /home/s9165843/yandex-cloud/completion.zsh.inc' >>  ~/.zshrc" to install it13:37:12.842645	Command execution finished

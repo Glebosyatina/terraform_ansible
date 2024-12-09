@@ -1,0 +1,9 @@
+13:40:09.369056	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:40:09.369041 +0000 UTC"}
+13:40:09.369148	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:40:09.369264	Selected profile	{"profile": "default"}
+13:40:09.369357	Updating values from flags
+13:40:09.390538	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:40:09.390668	Saving config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+out> Profile 'gleb' created and activated
+13:40:09.390871	Short command, don't wait for check result.
+13:40:09.390895	Command execution finished

@@ -1,0 +1,55 @@
+current: gleb
+profiles:
+  default:
+    token: y0_AgAAAAA81_8KAATuwQAAAAEavB-vAABokhF6anlP24rTxK9t5g0lY8KltQ
+    cloud-id: b1gtjf3unup3fbd0desb
+    folder-id: b1gioh0qgvf8vr1tabo1
+    compute-default-zone: ru-central1-a
+  gleb:
+    service-account-key:
+      id: aje9rbtadvsh47qq6gno
+      service_account_id: aje2s5a8k82knrgaqvii
+      created_at: "2024-12-09T13:39:56.356386177Z"
+      key_algorithm: RSA_2048
+      public_key: |
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA8tKAwd/LfJ2MVFXWK6iU
+        QQmgyZzvcR9OWV7yfwrFeMBgx2pgUqLOcMiYPHVfgp1mSON47ujttbUnWqZr7Ydh
+        C0eeFg/3u/RCOwYSQq3MZ0qOT8t9AzB9F+dxMX/VZUiZ+gyDMzBihUvKqOP4MbGG
+        Cm+6KAcGX6J+ytJaMPTus3Oc1EJFzSfXNHF6+yVPHGbrpMz+YQL4Lv33fCQ8EWUw
+        kD2wcKPI8VX0YYPQt0FAeMkqv0WWKm8ptR5QFo5PVQOYMDb45CwwmjGMR7WVXgHC
+        tzv7K8PnSM4t2IETb2zqnJICnlgUIulclf2Zov/ELX/IYjRvtC0nv1Zv3ySDZ7E2
+        YwIDAQAB
+        -----END PUBLIC KEY-----
+      private_key: |
+        PLEASE DO NOT REMOVE THIS LINE! Yandex.Cloud SA Key ID <aje9rbtadvsh47qq6gno>
+        -----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDy0oDB38t8nYxU
+        VdYrqJRBCaDJnO9xH05ZXvJ/CsV4wGDHamBSos5wyJg8dV+CnWZI43ju6O21tSda
+        pmvth2ELR54WD/e79EI7BhJCrcxnSo5Py30DMH0X53Exf9VlSJn6DIMzMGKFS8qo
+        4/gxsYYKb7ooBwZfon7K0low9O6zc5zUQkXNJ9c0cXr7JU8cZuukzP5hAvgu/fd8
+        JDwRZTCQPbBwo8jxVfRhg9C3QUB4ySq/RZYqbym1HlAWjk9VA5gwNvjkLDCaMYxH
+        tZVeAcK3O/srw+dIzi3YgRNvbOqckgKeWBQi6VyV/Zmi/8Qtf8hiNG+0LSe/Vm/f
+        JINnsTZjAgMBAAECggEAFbfZh6hM7/a7cBOZVfWnBPDSg8CDSK/kdxPfRpj1CT7T
+        qSJiPnc3Va5rXK+hfPI3uCSNqCNcl4L+Dm/neVWWysZ7ZOfFYEyRhpadbX9T/UJq
+        23I3hTXXX8Wgly0i2K3sr7O3dw2d0jmcL7eWzFhfb8bcdJYO7jYqIa6SHeIvs2G4
+        NRc51Qsh9r8WQ2gDs8IvFVcbU8lD/0amf58X6Bu7wyDKppp8eRMVTxarNj5QlFNc
+        gofiyYl/9UjfS7B5+Hg8oQurD395wT2qLZnObGyobvpn/JUR4LaiCQ8PSlvBHzjq
+        141UkJ6fR4LfNBiNPQD/BZiQeeLzIZp9Bnxt1TXMIQKBgQD0gAKhh/O7IATOcfvm
+        rOZfO3QRqz2G4giTSgEgV6Cw63nueekcMud+TjBdSOx3xHsqR35kTwRn4YpsfFeV
+        kLVwfx8z4oKN1sQhsUn1HrnFajGN+FZFjHd3wAKM8TvsFwnY13phJzC2P4Okgzbq
+        s2uvZfBSbKBHUqgwd3k6gBRtsQKBgQD+Pkp9m4EMM9LXMqlO/5JcEjIZSnfucgnL
+        +0WWXeiblhDwRQerAGXibBJZfiHw7cgez6lDs3ygisRExCLEYcEKl8OEwWF9lJdL
+        q22XGEM4fppJ9PGFPam7MJkQS0BgHlgTZTvEVqQ6v9bvvTlWjF4UW/kUez3A/8LC
+        6EDeENeGUwKBgQCVwx9ZcBwD/83R4pHIrxmBNbqX5AsQ5r0X8xmThPlBxUrvny8B
+        fdC8Vgpb6YImrmw+7oHl0VzCgK04XEWNsJDisosbTeBoHygN9zl08ngaCz0FWBsI
+        CM1YxX0Kde0dZNM8RmiIv+efinIJP/JQesw4KLm20yCt71xkK5pPEgrxUQKBgGsg
+        GAcA5MkddPNT117/9M1ypUVeyVXhGxulzlZjT0VvX8e9blOxITzcSIcIzIhVyIKj
+        ATETiamjjrti4TtZ7Rrng2yGhuuBFpa9rrmBcaF2RtBusu1vY/sJqRTigEd/waC6
+        gQpjb2OJvajaVDSRhHqTnknw+748hfXWIq7u7cEdAoGAcrP/rZGrlD+2lPWBK06+
+        EM9Zvio6xCHCuBG9m6A732Ue3dgmlcDMuAWm6QKRQGaQtzg37vzm9ZiYSCoic43q
+        f4BRFEYLQRqeliyuBQ0V64/0Kkw6+Wtqgmlp2gmoQpg+OV0FHnEiSruWfK/Jx1AJ
+        MIrTwEelFaKX2qCAtWzCg8U=
+        -----END PRIVATE KEY-----
+    cloud-id: b1gtjf3unup3fbd0desb
+    folder-id: b1gioh0qgvf8vr1tabo1

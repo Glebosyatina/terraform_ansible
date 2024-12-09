@@ -1,0 +1,272 @@
+13:39:55.799169	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:39:55.799156 +0000 UTC"}
+13:39:55.799261	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:39:55.799379	Selected profile	{"profile": "default"}
+13:39:55.799477	Updating values from flags
+13:39:55.818234	grpc	[core][Channel #1]Channel created
+13:39:55.818287	grpc	[core][Channel #1]original dial target is: "api.cloud.yandex.net:443"
+13:39:55.818308	grpc	[core][Channel #1]parsed dial target is: resolver.Target{URL:url.URL{Scheme:"api.cloud.yandex.net", Opaque:"443", User:(*url.Userinfo)(nil), Host:"", Path:"", RawPath:"", OmitHost:false, ForceQuery:false, RawQuery:"", Fragment:"", RawFragment:""}}
+13:39:55.818316	grpc	[core][Channel #1]fallback to scheme "passthrough"
+13:39:55.818327	grpc	[core][Channel #1]parsed dial target is: passthrough:///api.cloud.yandex.net:443
+13:39:55.818306	Update cache read	{"cache": {"check-timestamp":"2024-12-09T13:37:29Z"}}
+13:39:55.818338	grpc	[core][Channel #1]Channel authority set to "api.cloud.yandex.net:443"
+13:39:55.818349	Update check cached.	{"last_update_check": "2024-12-09 13:37:29 +0000 UTC"}
+13:39:55.818478	grpc	[core][Channel #1]Resolver state updated: {
+  "Addresses": [
+    {
+      "Addr": "api.cloud.yandex.net:443",
+      "ServerName": "",
+      "Attributes": null,
+      "BalancerAttributes": null,
+      "Metadata": null
+    }
+  ],
+  "Endpoints": [
+    {
+      "Addresses": [
+        {
+          "Addr": "api.cloud.yandex.net:443",
+          "ServerName": "",
+          "Attributes": null,
+          "BalancerAttributes": null,
+          "Metadata": null
+        }
+      ],
+      "Attributes": null
+    }
+  ],
+  "ServiceConfig": null,
+  "Attributes": null
+} (resolver returned new addresses)
+13:39:55.818507	grpc	[core][Channel #1]Channel switches to new LB policy "pick_first"
+13:39:55.818556	grpc	[core][pick-first-lb 0xc0016d8720] Received new config {
+  "shuffleAddressList": false
+}, resolver state {
+  "Addresses": [
+    {
+      "Addr": "api.cloud.yandex.net:443",
+      "ServerName": "",
+      "Attributes": null,
+      "BalancerAttributes": null,
+      "Metadata": null
+    }
+  ],
+  "Endpoints": [
+    {
+      "Addresses": [
+        {
+          "Addr": "api.cloud.yandex.net:443",
+          "ServerName": "",
+          "Attributes": null,
+          "BalancerAttributes": null,
+          "Metadata": null
+        }
+      ],
+      "Attributes": null
+    }
+  ],
+  "ServiceConfig": null,
+  "Attributes": null
+}
+13:39:55.818570	grpc	[core][Channel #1 SubChannel #2]Subchannel created
+13:39:55.818583	grpc	[core][Channel #1]Channel Connectivity change to CONNECTING
+13:39:55.818601	grpc	[core][Channel #1]Channel exiting idle mode
+13:39:55.818625	grpc	[core][Channel #1 SubChannel #2]Subchannel Connectivity change to CONNECTING
+13:39:55.818643	grpc	[core][Channel #1 SubChannel #2]Subchannel picks a new address "api.cloud.yandex.net:443" to connect
+13:39:55.818674	grpc	Dialing api.cloud.yandex.net:443 with timeout 19.999934796s
+13:39:55.818725	grpc	[core][pick-first-lb 0xc0016d8720] Received SubConn state update: 0xc0016d87b0, {ConnectivityState:CONNECTING ConnectionError:<nil>}
+13:39:55.827086	grpc	Dial api.cloud.yandex.net:443 successfully connected to: 84.201.181.26:443
+13:39:55.856319	grpc	[core][Channel #1 SubChannel #2]Subchannel Connectivity change to READY
+13:39:55.856374	grpc	[core][pick-first-lb 0xc0016d8720] Received SubConn state update: 0xc0016d87b0, {ConnectivityState:READY ConnectionError:<nil>}
+13:39:55.856387	grpc	[core][Channel #1]Channel Connectivity change to READY
+13:39:55.856442	Request  ApiEndpointService/List	{"request": {"method":"/yandex.cloud.endpoint.ApiEndpointService/List","header":{"idempotency-key":["e429c07e-94d6-4345-9947-549a04cee46f"],"x-client-request-id":["3fdc8df2-4520-46bb-8aaf-b78136a0def0"],"x-client-trace-id":["40623845-31a2-442a-a4f7-0fba8260ae9f"]},"payload":{"page_size":"100"}}}
+13:39:55.872361	Response ApiEndpointService/List	{"response": {"method":"/yandex.cloud.endpoint.ApiEndpointService/List","header":{"content-type":["application/grpc"],"date":["Mon, 09 Dec 2024 13:39:55 GMT"],"server":["ycapi"],"x-request-id":["06c43f60-5158-4d0c-8f01-59dafc1ac654"],"x-server-trace-id":["eb32a87a060cd957:e850cbda6ceddca:eb32a87a060cd957:1"]},"payload":{"endpoints":[{"id":"ai-assistants","address":"assistant.api.cloud.yandex.net:443"},{"id":"ai-files","address":"assistant.api.cloud.yandex.net:443"},{"id":"ai-foundation-models","address":"llm.api.cloud.yandex.net:443"},{"id":"ai-llm","address":"llm.api.cloud.yandex.net:443"},{"id":"ai-speechkit","address":"transcribe.api.cloud.yandex.net:443"},{"id":"ai-stt","address":"transcribe.api.cloud.yandex.net:443"},{"id":"ai-stt-v3","address":"stt.api.cloud.yandex.net:443"},{"id":"ai-translate","address":"translate.api.cloud.yandex.net:443"},{"id":"ai-vision","address":"vision.api.cloud.yandex.net:443"},{"id":"ai-vision-ocr","address":"ocr.api.cloud.yandex.net:443"},{"id":"alb","address":"alb.api.cloud.yandex.net:443"},{"id":"apigateway-connections","address":"apigateway-connections.api.cloud.yandex.net:443"},{"id":"application-load-balancer","address":"alb.api.cloud.yandex.net:443"},{"id":"apploadbalancer","address":"alb.api.cloud.yandex.net:443"},{"id":"audittrails","address":"audittrails.api.cloud.yandex.net:443"},{"id":"baas","address":"backup.api.cloud.yandex.net:443"},{"id":"backup","address":"backup.api.cloud.yandex.net:443"},{"id":"billing","address":"billing.api.cloud.yandex.net:443"},{"id":"broker-data","address":"iot-data.api.cloud.yandex.net:443"},{"id":"cdn","address":"cdn.api.cloud.yandex.net:443"},{"id":"certificate-manager","address":"certificate-manager.api.cloud.yandex.net:443"},{"id":"certificate-manager-data","address":"data.certificate-manager.api.cloud.yandex.net:443"},{"id":"cic","address":"cic-api.api.cloud.yandex.net:443"},{"id":"cloud-registry","address":"registry.api.cloud.yandex.net:443"},{"id":"cloudapps","address":"cloudapps.api.cloud.yandex.net:443"},{"id":"cloudbackup","address":"backup.api.cloud.yandex.net:443"},{"id":"clouddesktops","address":"clouddesktops.api.cloud.yandex.net:443"},{"id":"cloudrouter","address":"cic-api.api.cloud.yandex.net:443"},{"id":"cloudvideo","address":"video.api.cloud.yandex.net:443"},{"id":"compute","address":"compute.api.cloud.yandex.net:443"},{"id":"container-registry","address":"container-registry.api.cloud.yandex.net:443"},{"id":"dataproc","address":"dataproc.api.cloud.yandex.net:443"},{"id":"dataproc-manager","address":"dataproc-manager.api.cloud.yandex.net:443"},{"id":"datasphere","address":"datasphere.api.cloud.yandex.net:443"},{"id":"datatransfer","address":"datatransfer.api.cloud.yandex.net:443"},{"id":"dns","address":"dns.api.cloud.yandex.net:443"},{"id":"endpoint","address":"api.cloud.yandex.net:443"},{"id":"fomo-dataset","address":"fomo-dataset.api.cloud.yandex.net:443"},{"id":"fomo-tuning","address":"fomo-tuning.api.cloud.yandex.net:443"},{"id":"iam","address":"iam.api.cloud.yandex.net:443"},{"id":"iot-broker","address":"iot-broker.api.cloud.yandex.net:443"},{"id":"iot-data","address":"iot-data.api.cloud.yandex.net:443"},{"id":"iot-devices","address":"iot-devices.api.cloud.yandex.net:443"},{"id":"k8s","address":"mks.api.cloud.yandex.net:443"},{"id":"kms","address":"kms.api.cloud.yandex.net:443"},{"id":"kms-crypto","address":"kms.yandex:443"},{"id":"load-balancer","address":"load-balancer.api.cloud.yandex.net:443"},{"id":"loadtesting","address":"loadtesting.api.cloud.yandex.net:443"},{"id":"locator","address":"locator.api.cloud.yandex.net:443"},{"id":"lockbox","address":"lockbox.api.cloud.yandex.net:443"},{"id":"lockbox-payload","address":"payload.lockbox.api.cloud.yandex.net:443"},{"id":"log-ingestion","address":"ingester.logging.yandexcloud.net:443"},{"id":"log-reading","address":"reader.logging.yandexcloud.net:443"},{"id":"logging","address":"logging.api.cloud.yandex.net:443"},{"id":"managed-airflow","address":"airflow.api.cloud.yandex.net:443"},{"id":"managed-clickhouse","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-elasticsearch","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-greenplum","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-kafka","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-kubernetes","address":"mks.api.cloud.yandex.net:443"},{"id":"managed-mongodb","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-mysql","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-opensearch","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-postgresql","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-redis","address":"mdb.api.cloud.yandex.net:443"},{"id":"managed-sqlserver","address":"mdb.api.cloud.yandex.net:443"},{"id":"marketplace","address":"marketplace.api.cloud.yandex.net:443"},{"id":"marketplace-pim","address":"mkt.private-api.cloud.yandex.net:4446"},{"id":"mdb-clickhouse","address":"mdb.api.cloud.yandex.net:443"},{"id":"mdb-mongodb","address":"mdb.api.cloud.yandex.net:443"},{"id":"mdb-mysql","address":"mdb.api.cloud.yandex.net:443"},{"id":"mdb-opensearch","address":"mdb.api.cloud.yandex.net:443"},{"id":"mdb-postgresql","address":"mdb.api.cloud.yandex.net:443"},{"id":"mdb-redis","address":"mdb.api.cloud.yandex.net:443"},{"id":"mdbproxy","address":"mdbproxy.api.cloud.yandex.net:443"},{"id":"monitoring","address":"monitoring.api.cloud.yandex.net:443"},{"id":"operation","address":"operation.api.cloud.yandex.net:443"},{"id":"organization-manager","address":"organization-manager.api.cloud.yandex.net:443"},{"id":"organizationmanager","address":"organization-manager.api.cloud.yandex.net:443"},{"id":"resource-manager","address":"resource-manager.api.cloud.yandex.net:443"},{"id":"resourcemanager","address":"resource-manager.api.cloud.yandex.net:443"},{"id":"searchapi","address":"searchapi.api.cloud.yandex.net:443"},{"id":"serialssh","address":"serialssh.cloud.yandex.net:9600"},{"id":"serverless-apigateway","address":"serverless-apigateway.api.cloud.yandex.net:443"},{"id":"serverless-containers","address":"serverless-containers.api.cloud.yandex.net:443"},{"id":"serverless-eventrouter","address":"serverless-eventrouter.api.cloud.yandex.net:443"},{"id":"serverless-functions","address":"serverless-functions.api.cloud.yandex.net:443"},{"id":"serverless-gateway-connections","address":"apigateway-connections.api.cloud.yandex.net:443"},{"id":"serverless-triggers","address":"serverless-triggers.api.cloud.yandex.net:443"},{"id":"serverless-workflows","address":"serverless-workflows.api.cloud.yandex.net:443"},{"id":"serverlesseventrouter-events","address":"events.eventrouter.serverless.yandexcloud.net:443"},{"id":"smart-captcha","address":"smartcaptcha.api.cloud.yandex.net:443"},{"id":"smart-web-security","address":"smartwebsecurity.api.cloud.yandex.net:443"},{"id":"storage","address":"storage.yandexcloud.net:443"},{"id":"storage-api","address":"storage.api.cloud.yandex.net:443"},{"id":"video","address":"video.api.cloud.yandex.net:443"},{"id":"vpc","address":"vpc.api.cloud.yandex.net:443"},{"id":"ydb","address":"ydb.api.cloud.yandex.net:443"}]}}}
+13:39:55.872859	grpc	[core][Channel #4]Channel created
+13:39:55.872881	grpc	[core][Channel #4]original dial target is: "resource-manager.api.cloud.yandex.net:443"
+13:39:55.872907	grpc	[core][Channel #4]parsed dial target is: resolver.Target{URL:url.URL{Scheme:"resource-manager.api.cloud.yandex.net", Opaque:"443", User:(*url.Userinfo)(nil), Host:"", Path:"", RawPath:"", OmitHost:false, ForceQuery:false, RawQuery:"", Fragment:"", RawFragment:""}}
+13:39:55.872919	grpc	[core][Channel #4]fallback to scheme "passthrough"
+13:39:55.872934	grpc	[core][Channel #4]parsed dial target is: passthrough:///resource-manager.api.cloud.yandex.net:443
+13:39:55.872946	grpc	[core][Channel #4]Channel authority set to "resource-manager.api.cloud.yandex.net:443"
+13:39:55.873099	grpc	[core][Channel #4]Resolver state updated: {
+  "Addresses": [
+    {
+      "Addr": "resource-manager.api.cloud.yandex.net:443",
+      "ServerName": "",
+      "Attributes": null,
+      "BalancerAttributes": null,
+      "Metadata": null
+    }
+  ],
+  "Endpoints": [
+    {
+      "Addresses": [
+        {
+          "Addr": "resource-manager.api.cloud.yandex.net:443",
+          "ServerName": "",
+          "Attributes": null,
+          "BalancerAttributes": null,
+          "Metadata": null
+        }
+      ],
+      "Attributes": null
+    }
+  ],
+  "ServiceConfig": null,
+  "Attributes": null
+} (resolver returned new addresses)
+13:39:55.873142	grpc	[core][Channel #4]Channel switches to new LB policy "pick_first"
+13:39:55.873212	grpc	[core][pick-first-lb 0xc001febbc0] Received new config {
+  "shuffleAddressList": false
+}, resolver state {
+  "Addresses": [
+    {
+      "Addr": "resource-manager.api.cloud.yandex.net:443",
+      "ServerName": "",
+      "Attributes": null,
+      "BalancerAttributes": null,
+      "Metadata": null
+    }
+  ],
+  "Endpoints": [
+    {
+      "Addresses": [
+        {
+          "Addr": "resource-manager.api.cloud.yandex.net:443",
+          "ServerName": "",
+          "Attributes": null,
+          "BalancerAttributes": null,
+          "Metadata": null
+        }
+      ],
+      "Attributes": null
+    }
+  ],
+  "ServiceConfig": null,
+  "Attributes": null
+}
+13:39:55.873240	grpc	[core][Channel #4 SubChannel #5]Subchannel created
+13:39:55.873257	grpc	[core][Channel #4]Channel Connectivity change to CONNECTING
+13:39:55.873283	grpc	[core][Channel #4]Channel exiting idle mode
+13:39:55.873337	grpc	[core][Channel #4 SubChannel #5]Subchannel Connectivity change to CONNECTING
+13:39:55.873357	grpc	[core][Channel #4 SubChannel #5]Subchannel picks a new address "resource-manager.api.cloud.yandex.net:443" to connect
+13:39:55.873381	grpc	Dialing resource-manager.api.cloud.yandex.net:443 with timeout 19.999930575s
+13:39:55.873445	grpc	[core][pick-first-lb 0xc001febbc0] Received SubConn state update: 0xc001febc20, {ConnectivityState:CONNECTING ConnectionError:<nil>}
+13:39:55.881827	grpc	Dial resource-manager.api.cloud.yandex.net:443 successfully connected to: 84.201.181.26:443
+13:39:55.917717	grpc	[core][Channel #4 SubChannel #5]Subchannel Connectivity change to READY
+13:39:55.917819	grpc	[core][pick-first-lb 0xc001febbc0] Received SubConn state update: 0xc001febc20, {ConnectivityState:READY ConnectionError:<nil>}
+13:39:55.917840	grpc	[core][Channel #4]Channel Connectivity change to READY
+13:39:55.917883	Request  FolderService/List	{"request": {"method":"/yandex.cloud.resourcemanager.v1.FolderService/List","header":{"idempotency-key":["77a07419-ca03-4b7f-bbb0-84cae83cc070"],"x-client-request-id":["505fa7f9-0a3c-4d79-9d7d-c08410e4311e"],"x-client-trace-id":["40623845-31a2-442a-a4f7-0fba8260ae9f"]},"payload":{"cloud_id":"b1gtjf3unup3fbd0desb","page_size":"100","filter":"name = \"default\""}}}
+13:39:55.918037	grpc	Getting IAM Token for /yandex.cloud.resourcemanager.v1.FolderService/List
+13:39:55.918053	grpc	No IAM token cached. Creating.
+13:39:55.918080	grpc	[core][Channel #7]Channel created
+13:39:55.918093	grpc	[core][Channel #7]original dial target is: "iam.api.cloud.yandex.net:443"
+13:39:55.918117	grpc	[core][Channel #7]parsed dial target is: resolver.Target{URL:url.URL{Scheme:"iam.api.cloud.yandex.net", Opaque:"443", User:(*url.Userinfo)(nil), Host:"", Path:"", RawPath:"", OmitHost:false, ForceQuery:false, RawQuery:"", Fragment:"", RawFragment:""}}
+13:39:55.918129	grpc	[core][Channel #7]fallback to scheme "passthrough"
+13:39:55.918143	grpc	[core][Channel #7]parsed dial target is: passthrough:///iam.api.cloud.yandex.net:443
+13:39:55.918151	grpc	[core][Channel #7]Channel authority set to "iam.api.cloud.yandex.net:443"
+13:39:55.918224	grpc	[core][Channel #7]Resolver state updated: {
+  "Addresses": [
+    {
+      "Addr": "iam.api.cloud.yandex.net:443",
+      "ServerName": "",
+      "Attributes": null,
+      "BalancerAttributes": null,
+      "Metadata": null
+    }
+  ],
+  "Endpoints": [
+    {
+      "Addresses": [
+        {
+          "Addr": "iam.api.cloud.yandex.net:443",
+          "ServerName": "",
+          "Attributes": null,
+          "BalancerAttributes": null,
+          "Metadata": null
+        }
+      ],
+      "Attributes": null
+    }
+  ],
+  "ServiceConfig": null,
+  "Attributes": null
+} (resolver returned new addresses)
+13:39:55.918242	grpc	[core][Channel #7]Channel switches to new LB policy "pick_first"
+13:39:55.918281	grpc	[core][pick-first-lb 0xc002012a20] Received new config {
+  "shuffleAddressList": false
+}, resolver state {
+  "Addresses": [
+    {
+      "Addr": "iam.api.cloud.yandex.net:443",
+      "ServerName": "",
+      "Attributes": null,
+      "BalancerAttributes": null,
+      "Metadata": null
+    }
+  ],
+  "Endpoints": [
+    {
+      "Addresses": [
+        {
+          "Addr": "iam.api.cloud.yandex.net:443",
+          "ServerName": "",
+          "Attributes": null,
+          "BalancerAttributes": null,
+          "Metadata": null
+        }
+      ],
+      "Attributes": null
+    }
+  ],
+  "ServiceConfig": null,
+  "Attributes": null
+}
+13:39:55.918302	grpc	[core][Channel #7 SubChannel #8]Subchannel created
+13:39:55.918313	grpc	[core][Channel #7]Channel Connectivity change to CONNECTING
+13:39:55.918331	grpc	[core][Channel #7]Channel exiting idle mode
+13:39:55.918359	grpc	[core][Channel #7 SubChannel #8]Subchannel Connectivity change to CONNECTING
+13:39:55.918372	grpc	[core][Channel #7 SubChannel #8]Subchannel picks a new address "iam.api.cloud.yandex.net:443" to connect
+13:39:55.918390	grpc	Dialing iam.api.cloud.yandex.net:443 with timeout 19.999954845s
+13:39:55.918500	grpc	[core][pick-first-lb 0xc002012a20] Received SubConn state update: 0xc002012a80, {ConnectivityState:CONNECTING ConnectionError:<nil>}
+13:39:55.926313	grpc	Dial iam.api.cloud.yandex.net:443 successfully connected to: 84.201.181.26:443
+13:39:55.942808	grpc	[core][Channel #7 SubChannel #8]Subchannel Connectivity change to READY
+13:39:55.942860	grpc	[core][pick-first-lb 0xc002012a20] Received SubConn state update: 0xc002012a80, {ConnectivityState:READY ConnectionError:<nil>}
+13:39:55.942876	grpc	[core][Channel #7]Channel Connectivity change to READY
+13:39:55.942921	Request  IamTokenService/Create	{"request": {"method":"/yandex.cloud.iam.v1.IamTokenService/Create","header":{"idempotency-key":["77a07419-ca03-4b7f-bbb0-84cae83cc070"],"x-client-request-id":["91f987f1-43f6-40c4-b3da-fb46c611cb4e"],"x-client-trace-id":["40623845-31a2-442a-a4f7-0fba8260ae9f"]},"payload":{"yandex_passport_oauth_token":"*** hidden ***"}}}
+13:39:55.965976	Response IamTokenService/Create	{"response": {"method":"/yandex.cloud.iam.v1.IamTokenService/Create","header":{"content-type":["application/grpc"],"date":["Mon, 09 Dec 2024 13:39:55 GMT"],"server":["ycapi"],"x-request-id":["39afda58-a8c2-43cb-a70a-c27fcc467d4f"],"x-server-trace-id":["486ffbaf01916b24:de98c2c8e4a79a14:486ffbaf01916b24:1"]},"payload":{"iam_token":"t1.9euelZqSm56Nj53Mj5rPzcuWlIqdyu3rnpWayZSZjcedyImQl5GWkI3IlM7l8_dUGSRF-e9VFEk1_N3z9xRIIUX571UUSTX8zef1656Vmo-UnZeRi5yejMfLxoqUm5qS7_zF656Vmo-UnZeRi5yejMfLxoqUm5qS.**** (818CB4E2)","expires_at":"2024-12-10T01:39:55.961394090Z"}}}
+13:39:55.966090	grpc	Got IAM Token, set 'authorization' header.
+13:39:56.013833	Response FolderService/List	{"response": {"method":"/yandex.cloud.resourcemanager.v1.FolderService/List","header":{"content-type":["application/grpc"],"date":["Mon, 09 Dec 2024 13:39:55 GMT"],"server":["ycapi"],"x-request-id":["e0090ca0-082d-411f-825a-3bd2ec169d3c"],"x-server-trace-id":["a16b422d4f46f4de:d8491e9da002d0fa:a16b422d4f46f4de:1"]},"payload":{"folders":[{"id":"b1gioh0qgvf8vr1tabo1","cloud_id":"b1gtjf3unup3fbd0desb","created_at":"2024-05-13T06:26:49Z","name":"default","description":"Auto-created default folder","status":"ACTIVE"}]}}}
+13:39:56.013972	Request  KeyService/Create	{"request": {"method":"/yandex.cloud.iam.v1.KeyService/Create","header":{"idempotency-key":["908a7768-6d1c-4e96-ad8d-58c0e6c38af4"],"x-client-request-id":["864f525e-aed4-49f0-b667-1e86156862a3"],"x-client-trace-id":["40623845-31a2-442a-a4f7-0fba8260ae9f"]},"payload":{"service_account_id":"aje2s5a8k82knrgaqvii"}}}
+13:39:56.014069	grpc	Getting IAM Token for /yandex.cloud.iam.v1.KeyService/Create
+13:39:56.014086	grpc	IAM Token Cached. Expires in: 11h59m59.947311524s. 
+13:39:56.014094	grpc	Got IAM Token, set 'authorization' header.
+13:39:57.476308	Response KeyService/Create	{"response": {"method":"/yandex.cloud.iam.v1.KeyService/Create","header":{"content-type":["application/grpc"],"date":["Mon, 09 Dec 2024 13:39:57 GMT"],"server":["ycapi"],"x-request-id":["3e823a8d-a698-4d5e-b2d5-bb921b6c0b4c"],"x-server-trace-id":["1cea30a6e7da0bc5:e175e4ef5d342c7:1cea30a6e7da0bc5:1"]},"payload":{"key":{"id":"aje9rbtadvsh47qq6gno","service_account_id":"aje2s5a8k82knrgaqvii","created_at":"2024-12-09T13:39:56.356386177Z","key_algorithm":"RSA_2048"},"private_key":"*** hidden ***"}}}
+out> id: aje9rbtadvsh47qq6gno
+out> service_account_id: aje2s5a8k82knrgaqvii
+out> created_at: "2024-12-09T13:39:56.356386177Z"
+out> key_algorithm: RSA_2048
+out> 
+13:39:57.476806	grpc	[core][Channel #1]Channel Connectivity change to SHUTDOWN
+13:39:57.476823	grpc	[core][Channel #1]Closing the name resolver
+13:39:57.476850	grpc	[core][Channel #1]ccBalancerWrapper: closing
+13:39:57.476876	grpc	[core][Channel #1 SubChannel #2]Subchannel Connectivity change to SHUTDOWN
+13:39:57.476885	grpc	[core][Channel #1 SubChannel #2]Subchannel deleted
+13:39:57.476914	grpc	[transport][client-transport 0xc0016ee488] Closing: rpc error: code = Canceled desc = grpc: the client connection is closing
+13:39:57.477010	grpc	[core][Channel #1]Channel deleted
+13:39:57.477026	grpc	[core][Channel #4]Channel Connectivity change to SHUTDOWN
+13:39:57.477034	grpc	[core][Channel #4]Closing the name resolver
+13:39:57.477042	grpc	[core][Channel #4]ccBalancerWrapper: closing
+13:39:57.477041	grpc	[transport][client-transport 0xc0016ee488] loopyWriter exiting with error: transport closed by client
+13:39:57.477058	grpc	[core][Channel #4 SubChannel #5]Subchannel Connectivity change to SHUTDOWN
+13:39:57.477095	grpc	[core][Channel #4 SubChannel #5]Subchannel deleted
+13:39:57.477111	grpc	[transport][client-transport 0xc001ce26c8] Closing: rpc error: code = Canceled desc = grpc: the client connection is closing
+13:39:57.477152	grpc	[transport][client-transport 0xc001ce26c8] loopyWriter exiting with error: transport closed by client
+13:39:57.477184	grpc	[core][Channel #4]Channel deleted
+13:39:57.477203	grpc	[core][Channel #7]Channel Connectivity change to SHUTDOWN
+13:39:57.477215	grpc	[core][Channel #7]Closing the name resolver
+13:39:57.477236	grpc	[core][Channel #7]ccBalancerWrapper: closing
+13:39:57.477264	grpc	[core][Channel #7 SubChannel #8]Subchannel Connectivity change to SHUTDOWN
+13:39:57.477277	grpc	[core][Channel #7 SubChannel #8]Subchannel deleted
+13:39:57.477290	grpc	[transport][client-transport 0xc001ce2b48] Closing: rpc error: code = Canceled desc = grpc: the client connection is closing
+13:39:57.477367	grpc	[core][Channel #7]Channel deleted
+13:39:57.477385	grpc	[transport][client-transport 0xc001ce2b48] loopyWriter exiting with error: transport closed by client
+13:39:57.477386	Command execution finished

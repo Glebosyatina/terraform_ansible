@@ -1,0 +1,9 @@
+13:40:36.544416	Starting CLI	{"version": "0.140.0", "os": "linux", "arch": "amd64", "current-time": "2024-12-09 13:40:36.544404 +0000 UTC"}
+13:40:36.544509	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:40:36.545025	Selected profile	{"profile": "gleb"}
+13:40:36.545131	Updating values from flags
+13:40:36.564103	Loading config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:40:36.564355	Update cache read	{"cache": {"check-timestamp":"2024-12-09T13:37:29Z"}}
+13:40:36.564406	Update check cached.	{"last_update_check": "2024-12-09 13:37:29 +0000 UTC"}
+13:40:36.564544	Saving config file	{"path": "/home/s9165843/.config/yandex-cloud/config.yaml"}
+13:40:36.564901	Command execution finished

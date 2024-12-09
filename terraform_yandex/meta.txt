@@ -1,0 +1,12 @@
+#cloud-config
+users:
+  - name: gleb
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBN6a8qM76LfY21Z8YNz4PGDd7IhUdBh3OJKpV2rJ5qY s9165843@s9165843-03
+
+
+
+
