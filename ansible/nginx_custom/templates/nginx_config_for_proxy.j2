@@ -66,6 +66,7 @@ http {
                 server 158.160.58.69;
         }
         server{
+		listen 3000;
                 location /{
                   proxy_pass http://backend;
                 }
